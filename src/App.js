@@ -1,34 +1,34 @@
 import * as React from "react";
 import { Admin, Resource, ShowGuesser } from 'react-admin';
 import crudProvider from 'ra-data-nestjsx-crud'
-import { PatientsList, PatientsEdit, PatientsCreate } from "./components/patients";
-import { BrigadeMedicalPersonnelList, BrigadeMedicalPersonnelEdit, BrigadeMedicalPersonnelCreate } from './components/brigade-medical-personnel';
-import { NewsList, NewsEdit, NewsCreate } from "./components/news";
-import { RegisterOfCardsCreate, RegisterOfCardsEdit, RegisterOfCardsList } from "./components/register-of-cards";
-import { BrigadeList, BrigadeEdit, BrigadeCreate } from "./components/brigade";
-import { ArrivalsList, ArrivalsEdit, ArrivalsCreate } from "./components/arrivals";
-import { CardList, CardEdit, CardCreate } from "./components/cards";
+import { ClientsEdit, ClientsCreate, ClientsList } from "./components/clients";
+import { MeidcalStaffEdit, MeidcalStaffList, MeidcalStaffCreate } from './components/staff-medical-personnel';
+import { DoormanStaffList, DoormanStaffEdit, DoormanStaffCreate} from './components/staff-doorman-personnel';
+import { ServiceStaffCreate, ServiceStaffList, ServiceStaffEdit } from './components/staff-service-personnel';
+import { RegistersCreate, RegistersEdit, RegistersList } from "./components/registers";
+import { RoomsList, RoomsEdit, RoomsCreate } from "./components/rooms";
+import { StaffList, StaffEdit, StaffCreate } from "./components/staff";
+import { ShiftsList, ShiftsEdit, ShiftsCreate } from "./components/shifts";
+import { SchedulesCreate, SchedulesList, SchedulesEdit } from "./components/schedules";
 import { ComplainsSuggestionsEdit, ComplainsSuggestionsList, ComplainsSuggestionsCreate } from "./components/complains-suggestions/complains-suggestions";
-import { CatalogueOfServicesList, CatalogueOfServicesEdit, CatalogueOfServicesCreate } from "./components/catalogue-of-services";
-import { ComplexOfServicesList, ComplexOfServicesCreate, ComplexOfServicesEdit } from './components/complex-of-services';
-import { DepartmentsList, DepartmentsCreate, DepartmentsEdit } from "./components/departments";
-import { MedicalPersonnelList, MedicalPersonnelEdit, MedicalPersonnelCreate } from './components/medical-personnel';
+import { PaidServicesCreate, PaidServicesList, PaidServicesEdit } from "./components/paid-service";
+import { RegisterOfCardsCreate, RegisterOfCardsEdit, RegisterOfCardsList } from './components/paid-service-logs';
 
 const dataProvider = crudProvider('http://localhost:3000');
 const App = () => (
     <Admin dataProvider={dataProvider}>
-      <Resource name="patients" list={PatientsList} show={ShowGuesser} edit={PatientsEdit} create={PatientsCreate}/>
-      <Resource name="brigade-medical-personnel" list={BrigadeMedicalPersonnelList} show={ShowGuesser} edit={BrigadeMedicalPersonnelEdit} create={BrigadeMedicalPersonnelCreate}/>
-      <Resource name="register-of-cards" list={RegisterOfCardsList} show={ShowGuesser} create={RegisterOfCardsCreate} edit={RegisterOfCardsEdit} />
-      <Resource name="brigade" list={BrigadeList} show={ShowGuesser} edit={BrigadeEdit} create={BrigadeCreate}/>
-      <Resource name="arrivals" list={ArrivalsList} show={ShowGuesser} edit={ArrivalsEdit} create={ArrivalsCreate} />
-      <Resource name="cards" list={CardList} show={ShowGuesser} edit={CardEdit} create={CardCreate}/>
-      <Resource name="catalogue-of-services" list={CatalogueOfServicesList} show={ShowGuesser} edit={CatalogueOfServicesEdit} create={CatalogueOfServicesCreate} /> 
-      <Resource name="complex-of-services" list={ComplexOfServicesList} show={ShowGuesser} edit={ComplexOfServicesEdit} create={ComplexOfServicesCreate} />
-      <Resource name="medical-personnel" list={MedicalPersonnelList} show={ShowGuesser} edit={MedicalPersonnelEdit} create={MedicalPersonnelCreate}/>
-      <Resource name="departments" list={DepartmentsList} show={ShowGuesser} edit={DepartmentsEdit} create={DepartmentsCreate}/>
+      <Resource name="clients" list={ClientsList} show={ShowGuesser} edit={ClientsEdit} create={ClientsCreate}/>
+      <Resource name="staff-doorman-personnel" list={DoormanStaffList} show={ShowGuesser} edit={DoormanStaffEdit} create={DoormanStaffCreate}/>
+      <Resource name="staff-medical-personnel" list={MeidcalStaffList} show={ShowGuesser} edit={MeidcalStaffEdit} create={MeidcalStaffCreate}/>
+      <Resource name="staff-service-personnel" list={ServiceStaffList} show={ShowGuesser} edit={ServiceStaffEdit} create={ServiceStaffCreate}/>
       <Resource name="complains-suggestions" list={ComplainsSuggestionsList} show={ShowGuesser} edit={ComplainsSuggestionsEdit} create={ComplainsSuggestionsCreate}/>
-      <Resource name="news" list={NewsList} show={ShowGuesser} edit={NewsEdit} create={NewsCreate} />
+      <Resource name="registers" list={RegistersList} show={ShowGuesser} create={RegistersCreate} edit={RegistersEdit} />
+      <Resource name="staff" list={StaffList} show={ShowGuesser} edit={StaffEdit} create={StaffCreate}/>
+      <Resource name="shifts" list={ShiftsList} show={ShowGuesser} edit={ShiftsEdit} create={ShiftsCreate} />
+      <Resource name="rooms" list={RoomsList} show={ShowGuesser} edit={RoomsEdit} create={RoomsCreate}/>
+      <Resource name="schedules" list={SchedulesList} show={ShowGuesser} edit={SchedulesEdit} create={SchedulesCreate} /> 
+      <Resource name="paid-services" list={PaidServicesList} show={ShowGuesser} edit={PaidServicesEdit} create={PaidServicesCreate}/>
+      <Resource name="paid-services-logs" list={RegisterOfCardsList} show={ShowGuesser} edit={RegisterOfCardsEdit} create={RegisterOfCardsCreate} />
     </Admin>
   );
 

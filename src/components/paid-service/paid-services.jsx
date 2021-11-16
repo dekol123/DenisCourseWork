@@ -10,33 +10,28 @@ import {
     SimpleForm,
     Create,
     Edit,
-    ReferenceInput,
-    SelectInput,
     SimpleList,
     useRefresh,
-    useRedirect
+    useRedirect,
 } from 'react-admin';
 
-const complainsSuggestionsFilters = [
-    <TextInput source="review" label="Search by review" alwaysOn />,
-    <ReferenceInput source="id" label="Filter by id" reference="complains-suggestions" allowEmpty>
-        <SelectInput optionText="id" />
-    </ReferenceInput>,
+const registerOfCardsFilters = [
+    <TextInput source="name" label="Search by name" alwaysOn />,
 ]
 
-export const ComplainsSuggestionsList = props => {
+export const PaidServicesList = props => {
     const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
-    return (<List filters={complainsSuggestionsFilters} {...props}>
+    return (<List filters={registerOfCardsFilters} {...props}>
         {isSmall ? (
             <SimpleList
-                primaryText={record => record.review}
-                secondaryText={record => `${record.id}`}
-                tertiaryText={record => ""}
+                primaryText={record => record.name}
+                secondaryText={record => `${record.price}`}
             />
         ) : (
         <Datagrid rowClick="edit">
             <NumberField source="id" />
-            <TextField source="content" />
+            <TextField source="name" />
+            <TextField source="price" />
             <EditButton />
         </Datagrid>
         )}
@@ -44,27 +39,29 @@ export const ComplainsSuggestionsList = props => {
     );
 };
 
-export const ComplainsSuggestionsEdit = props => (
+export const PaidServicesEdit = props => (
     <Edit {...props}>
         <SimpleForm>
             <TextInput disabled source="id" />
-            <TextInput source="content" />
+            <TextInput source="name" />
+            <TextInput source="price" />
         </SimpleForm>
     </Edit>
 )
 
-export const ComplainsSuggestionsCreate = props => {
+export const PaidServicesCreate = props => {
     const refresh = useRefresh();
     const redirect = useRedirect();
 
     const onSuccess = () => {
-        redirect(`/complains-suggestions`);
+        redirect(`/paid-services`);
         refresh();
     };
 
     return (<Create onSuccess={onSuccess} {...props}>
         <SimpleForm>
-            <TextInput source="content" />
+            <TextInput source="name" />
+            <TextInput source="price" />
         </SimpleForm>
     </Create>)
 }
